@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- ── SEO ────────────────────────────────────────────────────────── -->
-    <title>Circuits Street — Fiches Calisthenics à Imprimer | CBL & Atlas</title>
-    <meta name="description" content="Génère et imprime tes fiches de circuits street workout en 4 gestes. 5 niveaux (Kids → Elite), 60 circuits calisthenics, formats compétition CBL & Atlas Corporation. Gratuit, sans compte.">
-    <meta name="keywords" content="circuit calisthenics, fiche street workout, calisthenics imprimable, CBL, Atlas Corporation, calisthenics débutant, elite calisthenics, fiches entraînement">
+    <title>Circuits Street — Fiches Calisthenics à Imprimer</title>
+    <meta name="description" content="Génère et imprime tes fiches de circuits street workout en 4 gestes. 5 niveaux (Kids → Elite), 60 circuits calisthenics. Gratuit, sans compte.">
+    <meta name="keywords" content="circuit calisthenics, fiche street workout, calisthenics imprimable, calisthenics débutant, elite calisthenics, fiches entraînement">
     <meta name="author" content="Circuits Street">
     <meta name="robots" content="index, follow">
 
-    <!-- ── Open Graph (réseaux sociaux) ──────────────────────────────── -->
-    <!-- Remplace l'URL ci-dessous par ton domaine Vercel après déploiement -->
+    <!-- ── Open Graph ─────────────────────────────────────────────────── -->
     <meta property="og:type"        content="website">
     <meta property="og:title"       content="Circuits Street — Fiches Calisthenics à Imprimer">
-    <meta property="og:description" content="Génère et imprime tes fiches de circuits street workout en 4 gestes. 5 niveaux, 60 circuits, formats compétition CBL & Atlas.">
+    <meta property="og:description" content="Génère et imprime tes fiches de circuits street workout en 4 gestes. 5 niveaux, 60 circuits. Gratuit, sans compte.">
     <meta property="og:url"         content="https://circuits-street.vercel.app">
     <meta property="og:locale"      content="fr_FR">
     <meta property="og:site_name"   content="Circuits Street">
@@ -23,7 +22,7 @@
     <!-- ── Twitter Card ───────────────────────────────────────────────── -->
     <meta name="twitter:card"        content="summary">
     <meta name="twitter:title"       content="Circuits Street — Fiches Calisthenics à Imprimer">
-    <meta name="twitter:description" content="Génère et imprime tes fiches de circuits street workout en 4 gestes. 5 niveaux, 60 circuits, formats compétition CBL & Atlas.">
+    <meta name="twitter:description" content="Génère et imprime tes fiches de circuits street workout en 4 gestes. 5 niveaux, 60 circuits. Gratuit, sans compte.">
 
     <!-- ── Canonical ──────────────────────────────────────────────────── -->
     <link rel="canonical" href="https://circuits-street.vercel.app">
@@ -47,69 +46,11 @@
           </div>
           <h1>Tes fiches<br>en 4 gestes.</h1>
         </div>
-        <div class="hero-actions">
-          <button id="bonus-btn" class="btn-bonus" type="button">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
-            Circuits Officiels
-          </button>
-          <button id="print-sheet" class="btn-print" type="button">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9V2h12v7"/><rect x="2" y="9" width="20" height="9" rx="2"/><path d="M6 18v4h12v-4"/></svg>
-            Imprimer PDF
-          </button>
-        </div>
+        <button id="print-sheet" class="btn-print" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9V2h12v7"/><rect x="2" y="9" width="20" height="9" rx="2"/><path d="M6 18v4h12v-4"/></svg>
+          Imprimer PDF
+        </button>
       </header>
-
-      <!-- Bonus Modal -->
-      <div id="bonus-modal" class="bonus-modal" role="dialog" aria-modal="true" aria-label="Circuits de compétition">
-        <div id="bonus-modal-overlay" class="bonus-overlay"></div>
-        <div class="bonus-panel">
-          <div class="bonus-panel-head">
-            <div>
-              <p class="eyebrow">Circuits officiels · CBL &amp; Atlas Corporation</p>
-              <h2 class="bonus-title">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="#d4a843" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
-                Circuits de Compétition
-              </h2>
-              <p class="bonus-subtitle">Inspirés des WODs publiés lors des saisons 2023-2024</p>
-            </div>
-            <button id="bonus-close" class="bonus-close-btn" type="button" aria-label="Fermer">✕</button>
-          </div>
-
-          <!-- Filters -->
-          <div class="bonus-filters">
-            <div class="bonus-filter-row">
-              <span class="bonus-filter-label">Organisme</span>
-              <button class="bonus-chip active" data-filter-key="org" data-filter-value="all">Tous</button>
-              <button class="bonus-chip" data-filter-key="org" data-filter-value="CBL">CBL</button>
-              <button class="bonus-chip" data-filter-key="org" data-filter-value="Atlas">Atlas Corp</button>
-            </div>
-            <div class="bonus-filter-row">
-              <span class="bonus-filter-label">Phase</span>
-              <button class="bonus-chip active" data-filter-key="phase" data-filter-value="all">Toutes</button>
-              <button class="bonus-chip" data-filter-key="phase" data-filter-value="Qualifications">Qualifications</button>
-              <button class="bonus-chip" data-filter-key="phase" data-filter-value="Régionales">Régionales</button>
-              <button class="bonus-chip" data-filter-key="phase" data-filter-value="Nationales">Nationales</button>
-            </div>
-            <div class="bonus-filter-row">
-              <span class="bonus-filter-label">Division</span>
-              <button class="bonus-chip active" data-filter-key="division" data-filter-value="all">Toutes</button>
-              <button class="bonus-chip" data-filter-key="division" data-filter-value="Rookie">Rookie</button>
-              <button class="bonus-chip" data-filter-key="division" data-filter-value="Amateur">Amateur</button>
-              <button class="bonus-chip" data-filter-key="division" data-filter-value="Pro">Pro</button>
-              <button class="bonus-chip" data-filter-key="division" data-filter-value="Elite">Elite</button>
-            </div>
-            <div class="bonus-filter-row">
-              <span class="bonus-filter-label">Catégorie</span>
-              <button class="bonus-chip active" data-filter-key="gender" data-filter-value="all">Tous</button>
-              <button class="bonus-chip" data-filter-key="gender" data-filter-value="Men">Men</button>
-              <button class="bonus-chip" data-filter-key="gender" data-filter-value="Women">Women</button>
-            </div>
-          </div>
-
-          <!-- Competition cards grid -->
-          <div id="bonus-grid" class="bonus-grid"></div>
-        </div>
-      </div>
 
       <!-- ② Sélecteur de niveau -->
       <section class="step-block">
@@ -142,10 +83,6 @@
               <span class="step-label-sm">Fiches / page</span>
               <div id="print-mode-switch"></div>
             </div>
-            <button id="share-btn" class="btn-share" type="button" title="Copier le lien de cette sélection">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-              <span id="share-label">Partager</span>
-            </button>
             <button id="print-sheet-2" class="btn-print" type="button">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9V2h12v7"/><rect x="2" y="9" width="20" height="9" rx="2"/><path d="M6 18v4h12v-4"/></svg>
               Imprimer
@@ -195,6 +132,5 @@
 
     <script src="./data.js"></script>
     <script src="./app.js"></script>
-    <script src="./bonus.js"></script>
   </body>
 </html>
