@@ -1,0 +1,606 @@
+/* ── Reset & Variables ──────────────────────────────────────────────── */
+:root {
+  --bg:     #f4f7fb;
+  --panel:  #ffffff;
+  --line:   rgba(16, 24, 40, 0.08);
+  --text:   #102033;
+  --muted:  #617287;
+  --gold:   #f0bf57;
+  --red:    #ff3220;
+  --shadow: 0 12px 40px rgba(15, 40, 85, 0.08);
+  --radius: 20px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+
+body {
+  background: linear-gradient(180deg, #f7f9fc 0%, #eef3f8 100%);
+  color: var(--text);
+  font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+button, select { font: inherit; }
+
+.page-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Typography ─────────────────────────────────────────────────────── */
+h1, h2, .chip, .card-title {
+  margin: 0;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+h1 { font-size: clamp(1.9rem, 5vw, 3.6rem); line-height: 0.9; }
+h2 { font-size: 1.4rem; }
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: #2d66c3;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* ── Panel shell ────────────────────────────────────────────────────── */
+.hero, .step-block, .print-board {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ── Hero ───────────────────────────────────────────────────────────── */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  flex-wrap: wrap;
+}
+
+.hero-content { display: flex; flex-direction: column; gap: 10px; }
+
+.steps-strip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.step {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #edf3ff;
+  color: #1d5dd1;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.step-arrow { color: var(--muted); font-size: 1rem; font-weight: 300; }
+
+/* ── Print button ───────────────────────────────────────────────────── */
+.btn-print {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 14px;
+  background: #1d5dd1;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-print:hover { background: #1750bc; }
+
+/* ── Step blocks ─────────────────────────────────────────────────────── */
+.step-block { padding: 16px 18px; }
+.step-block--row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.step-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+.step-block--row .step-label { margin-bottom: 0; }
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: #1d5dd1;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.step-label-sm {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ── Division chips ──────────────────────────────────────────────────── */
+.level-switch {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #f8fbff;
+  color: #2858aa;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.chip-label {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.chip-desc {
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+.chip.active {
+  background: #1d5dd1;
+  color: #fff;
+  border-color: #1d5dd1;
+}
+
+.chip.active .chip-desc { color: rgba(255,255,255,0.7); }
+
+/* Print-mode chips (simpler) */
+#print-mode-switch .chip {
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 14px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Gender buttons ──────────────────────────────────────────────────── */
+.gender-switch { display: flex; gap: 8px; }
+
+.gender-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  background: #f8fbff;
+  color: #2858aa;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: background 0.15s, color 0.15s;
+}
+
+.gender-btn:hover { background: #edf3ff; }
+.gender-btn.active {
+  background: #1d5dd1;
+  color: #fff;
+  border-color: #1d5dd1;
+}
+
+/* ── Carousel hint ───────────────────────────────────────────────────── */
+.carousel-hint {
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* ── Cards carousel ──────────────────────────────────────────────────── */
+.cards-grid {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+}
+.cards-grid::-webkit-scrollbar { display: none; }
+
+/* ── Card ────────────────────────────────────────────────────────────── */
+.circuit-card {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+@media (max-width: 600px) {
+  .circuit-card { flex: 0 0 80vw; }
+}
+
+.card-toggle {
+  min-height: 34px;
+  border: 0;
+  border-radius: 999px;
+  background: #edf3ff;
+  color: #1d5dd1;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.selected .card-toggle {
+  background: #1d5dd1;
+  color: #fff;
+}
+
+.card-shell {
+  position: relative;
+  overflow: hidden;
+  min-height: 460px;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.card-bg, .card-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.card-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-overlay {
+  background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.16));
+}
+
+.card-frame {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 440px;
+  padding: 14px;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 16px;
+}
+
+.card-frame::before, .card-frame::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: rgba(255,245,221,0.45);
+  border-style: solid;
+}
+.card-frame::before { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
+.card-frame::after  { right: 8px; bottom: 8px; border-width: 0 2px 2px 0; }
+
+.card-head { margin-bottom: 10px; }
+
+.card-title {
+  color: var(--accent, #f0bf57);
+  font-size: 1.7rem;
+  line-height: 0.9;
+}
+
+.card-subtitle {
+  margin: 5px 0 0;
+  color: #f8fbff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.74rem;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 6px 0 0;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.exercise-list {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style-position: inside;
+  text-align: center;
+  color: #fff;
+  font-family: "Arial Black", "Arial Narrow Bold", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  flex: 1;
+}
+
+.exercise-list li::marker { color: var(--gold); }
+
+/* @kg — rouge vif saturé, jamais rose */
+.kg-load { color: #e53e3e; font-weight: 900; }
+
+/* Kids exercise category badges */
+.ex-badge {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 5px;
+  font-size: 0.56rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  margin-right: 4px;
+  vertical-align: middle;
+  font-family: "Arial Black", sans-serif;
+}
+
+/* Center Kids list items (badge + text inline) */
+.card-kids .exercise-list { text-align: center; }
+.card-kids .exercise-list li { list-style: none; }
+
+/* Kids card accent ring */
+.card-kids .card-shell {
+  box-shadow: 0 0 0 2px #fdcb6e44;
+}
+
+/* Elite — platinum premium */
+.card-elite .card-shell {
+  box-shadow:
+    0 0 0 1.5px rgba(212,168,67,0.5),
+    0 0 28px rgba(212,168,67,0.18),
+    0 24px 60px rgba(0,0,0,0.5);
+}
+.card-elite .card-frame {
+  border-color: var(--frame-border, rgba(212,168,67,0.35));
+}
+.card-elite .card-frame::before,
+.card-elite .card-frame::after {
+  border-color: rgba(212,168,67,0.7);
+}
+.card-elite .exercise-list li::marker {
+  color: #d4a843;
+}
+.card-elite .card-tag { color: rgba(212,168,67,0.65); }
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.time-cap {
+  margin: 0;
+  color: #78d8ff;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card-tag {
+  margin: 0;
+  color: rgba(255,255,255,0.68);
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-align: right;
+}
+
+/* ── Print board ─────────────────────────────────────────────────────── */
+.print-board { padding: 20px; }
+
+.print-board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.print-controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.print-mode-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#print-mode-switch { display: flex; gap: 6px; }
+
+.selection-info {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.selection-info strong { color: #1d5dd1; font-size: 1rem; }
+
+.print-note {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.5;
+}
+
+/* ── Print grids ─────────────────────────────────────────────────────── */
+.print-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.print-grid.mode-3 { grid-template-columns: repeat(3, 1fr); }
+.print-grid.mode-6 { grid-template-columns: repeat(3, 1fr); }
+
+/* Screen height for slots */
+.print-grid.mode-3 .print-card .card-shell,
+.print-grid.mode-3 .print-slot { min-height: 340px; }
+
+.print-grid.mode-6 .print-card .card-shell,
+.print-grid.mode-6 .print-slot { min-height: 200px; }
+
+/* ── Print card size adjustments ─────────────────────────────────────── */
+.print-card .card-toggle { display: none; }
+
+.print-card .card-title  { font-size: 1.3rem; }
+.print-card .card-frame  { min-height: unset; height: 100%; padding: 10px; }
+.print-card .exercise-list { font-size: 0.78rem; gap: 4px; }
+.print-card .time-cap    { font-size: 1rem; }
+.print-card .card-subtitle { font-size: 0.66rem; }
+
+/* Mode-6 even more compact */
+.print-grid.mode-6 .print-card .card-title { font-size: 1.1rem; }
+.print-grid.mode-6 .print-card .exercise-list { font-size: 0.7rem; gap: 3px; }
+.print-grid.mode-6 .print-card .card-head { margin-bottom: 6px; }
+
+/* ── Empty print slots ───────────────────────────────────────────────── */
+.print-slot {
+  display: flex;
+  border: 1px dashed #c8d8ef;
+  background: #f8fbff;
+  border-radius: 20px;
+}
+
+.print-slot-inner {
+  margin: auto;
+  color: #9bafc4;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── Mobile ──────────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .hero { flex-direction: column; align-items: flex-start; }
+  .btn-print { width: 100%; justify-content: center; }
+  .print-grid.mode-3,
+  .print-grid.mode-6 { grid-template-columns: 1fr; }
+  .print-board-header { flex-direction: column; align-items: flex-start; }
+}
+
+/* ── Print ───────────────────────────────────────────────────────────── */
+@page { size: A4 landscape; margin: 6mm; }
+
+@media print {
+  body { background: #fff; }
+
+  .hero, .step-block, .selection-info, .print-board-header,
+  .print-note, #print-mode-switch, .print-mode-wrap, .step-label-sm { display: none; }
+
+  .page-shell { max-width: none; padding: 0; gap: 0; }
+
+  .print-board {
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  /* Mode 3: 3 columns × 1 row → tall cards */
+  .print-grid.mode-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5mm;
+  }
+  .print-grid.mode-3 .print-card .card-shell,
+  .print-grid.mode-3 .print-slot { min-height: 190mm; }
+  .print-grid.mode-3 .print-card .exercise-list { font-size: 0.88rem; gap: 5px; }
+  .print-grid.mode-3 .print-card .card-title    { font-size: 1.6rem; }
+
+  /* Mode 6: 3 columns × 2 rows → card-size cards */
+  .print-grid.mode-6 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+  }
+  .print-grid.mode-6 .print-card .card-shell,
+  .print-grid.mode-6 .print-slot { min-height: 91mm; }
+  .print-grid.mode-6 .print-card .exercise-list { font-size: 0.72rem; gap: 3px; }
+  .print-grid.mode-6 .print-card .card-title    { font-size: 1.1rem; }
+  .print-grid.mode-6 .print-card .time-cap      { font-size: 0.9rem; }
+  .print-grid.mode-6 .print-card .card-frame    { padding: 8px; }
+  .print-grid.mode-6 .print-card .card-frame::before,
+  .print-grid.mode-6 .print-card .card-frame::after { display: none; }
+
+  .print-card, .print-card .card-shell, .print-slot { break-inside: avoid; }
+}

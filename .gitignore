@@ -1,0 +1,12 @@
+# Système
+.DS_Store
+Thumbs.db
+
+# Images et PDFs (non nécessaires pour le site web)
+*.png
+*.jpg
+*.jpeg
+*.pdf
+
+# Node (si jamais)
+node_modules/

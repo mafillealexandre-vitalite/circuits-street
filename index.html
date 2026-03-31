@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Circuits Street — CBL</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+
+      <!-- ① Hero -->
+      <header class="hero">
+        <div class="hero-content">
+          <div class="steps-strip">
+            <span class="step"><b>①</b> Niveau</span>
+            <span class="step-arrow">›</span>
+            <span class="step"><b>②</b> Catégorie</span>
+            <span class="step-arrow">›</span>
+            <span class="step"><b>③</b> Sélectionne</span>
+            <span class="step-arrow">›</span>
+            <span class="step"><b>④</b> Imprime</span>
+          </div>
+          <h1>Tes fiches<br>en 4 gestes.</h1>
+        </div>
+        <button id="print-sheet" class="btn-print" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9V2h12v7"/><rect x="2" y="9" width="20" height="9" rx="2"/><path d="M6 18v4h12v-4"/></svg>
+          Imprimer PDF
+        </button>
+      </header>
+
+      <!-- ② Sélecteur de niveau -->
+      <section class="step-block">
+        <div class="step-label"><span class="step-num">①</span> Choisis ton niveau</div>
+        <div class="level-switch" id="division-switch"></div>
+      </section>
+
+      <!-- ③ Sélecteur genre -->
+      <section class="step-block step-block--row">
+        <div class="step-label"><span class="step-num">②</span> Catégorie</div>
+        <div class="gender-switch" id="gender-switch"></div>
+      </section>
+
+      <!-- ④ Carousel -->
+      <section class="step-block">
+        <div class="step-label"><span class="step-num">③</span> Glisse et sélectionne tes circuits</div>
+        <div class="carousel-hint">← swipe →</div>
+        <div id="cards-grid" class="cards-grid"></div>
+      </section>
+
+      <!-- ⑤ Plateau d'impression -->
+      <section class="print-board">
+        <div class="print-board-header">
+          <div>
+            <p class="eyebrow">A4 Paysage</p>
+            <h2 id="print-board-title">Tes fiches à imprimer</h2>
+          </div>
+          <div class="print-controls">
+            <div class="print-mode-wrap">
+              <span class="step-label-sm">Fiches / page</span>
+              <div id="print-mode-switch"></div>
+            </div>
+            <button id="print-sheet-2" class="btn-print" type="button">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9V2h12v7"/><rect x="2" y="9" width="20" height="9" rx="2"/><path d="M6 18v4h12v-4"/></svg>
+              Imprimer
+            </button>
+          </div>
+        </div>
+
+        <p class="selection-info">
+          <strong id="selection-count">0</strong> / <strong id="selection-max">6</strong>
+          circuits sélectionnés — clique sur une carte pour l'ajouter
+        </p>
+
+        <div id="print-grid" class="print-grid mode-6"></div>
+
+        <p class="print-note">
+          Dans la fenêtre d'impression, active <em>«&nbsp;Imprimer les arrière-plans&nbsp;»</em> pour conserver les couleurs.
+        </p>
+      </section>
+
+    </main>
+
+    <!-- Card template -->
+    <template id="card-template">
+      <article class="circuit-card">
+        <button class="card-toggle" type="button">+ Ajouter</button>
+        <div class="card-shell">
+          <img class="card-bg" alt="" />
+          <div class="card-overlay"></div>
+          <div class="card-frame">
+            <div class="card-head">
+              <p class="card-title"></p>
+              <p class="card-subtitle"></p>
+              <p class="card-meta">
+                <span class="card-gender"></span>
+                <span class="card-round"></span>
+              </p>
+            </div>
+            <ol class="exercise-list"></ol>
+            <div class="card-footer">
+              <p class="time-cap"></p>
+              <p class="card-tag"></p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="./data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
