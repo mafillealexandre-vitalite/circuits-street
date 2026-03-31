@@ -385,6 +385,134 @@ function getFilteredCircuits() {
   });
 }
 
+// ── Competition card texture ───────────────────────────────────────────
+function buildCompTexture(org) {
+  if (org === "Atlas") return buildEliteTexture();
+
+  // CBL — near-black with red diagonal slashes (mirrors buildEliteTexture)
+  const red  = "#e53e3e";
+  const red2 = "#ff6b6b";
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1600" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="cblbg" x1="0%" y1="0%" x2="10%" y2="100%">
+          <stop offset="0%"   stop-color="#0e0305"/>
+          <stop offset="40%"  stop-color="#090203"/>
+          <stop offset="100%" stop-color="#050102"/>
+        </linearGradient>
+        <linearGradient id="cblshimmer" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%"   stop-color="${red2}" stop-opacity="0"/>
+          <stop offset="48%"  stop-color="${red2}" stop-opacity="0.14"/>
+          <stop offset="52%"  stop-color="#ffffff"  stop-opacity="0.20"/>
+          <stop offset="100%" stop-color="${red2}" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <rect width="900" height="1600" fill="url(#cblbg)"/>
+      <g opacity="0.07" stroke="#c8cfd8" stroke-width="1.5" fill="none">
+        <path d="M0 200 L900 200"/><path d="M0 400 L900 400"/>
+        <path d="M0 600 L900 600"/><path d="M0 800 L900 800"/>
+        <path d="M0 1000 L900 1000"/><path d="M0 1200 L900 1200"/>
+        <path d="M0 1400 L900 1400"/>
+        <path d="M150 0 L150 1600"/><path d="M300 0 L300 1600"/>
+        <path d="M450 0 L450 1600"/><path d="M600 0 L600 1600"/>
+        <path d="M750 0 L750 1600"/>
+      </g>
+      <g opacity="0.28" stroke="${red}" stroke-width="12" stroke-linecap="round">
+        <path d="M80 0 L560 1600"/>
+        <path d="M240 0 L720 1600"/>
+      </g>
+      <g opacity="0.18" stroke="${red2}" stroke-width="3">
+        <path d="M40 0 L520 1600"/>
+        <path d="M600 0 L900 820"/>
+      </g>
+      <rect width="900" height="1600" fill="url(#cblshimmer)" opacity="0.6"/>
+      <g opacity="0.55" stroke="${red}" stroke-width="4" fill="none">
+        <path d="M0 1500 C100 1460 180 1390 280 1310 C380 1230 460 1270 580 1300 C680 1330 760 1280 900 1260"/>
+        <path d="M0 1540 C120 1510 200 1440 300 1360 C400 1280 500 1310 620 1340 C720 1365 800 1315 900 1300"/>
+        <path d="M0 1580 C80 1560 160 1520 260 1460 C360 1400 440 1420 560 1450"/>
+      </g>
+      <circle cx="820" cy="80" r="80" fill="${red}" opacity="0.10"/>
+      <circle cx="820" cy="80" r="40" fill="${red2}" opacity="0.18"/>
+      <circle cx="60"  cy="1520" r="30" fill="${red}" opacity="0.12"/>
+      <line x1="0" y1="2" x2="900" y2="2" stroke="${red}" stroke-width="3" opacity="0.5"/>
+    </svg>`;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
+// ── Build a competition card using the same visual style as circuit cards ──
+function buildCompCard(c) {
+  const org = COMP_ORGS[c.org];
+
+  const article = document.createElement("article");
+  article.className = "comp-card-full";
+  if (c.org === "Atlas") article.classList.add("card-elite");
+
+  const shell = document.createElement("div");
+  shell.className = "card-shell";
+  shell.style.setProperty("--accent", org.color);
+
+  const bg = document.createElement("img");
+  bg.className = "card-bg";
+  bg.src = buildCompTexture(c.org);
+  bg.alt = "";
+
+  const overlay = document.createElement("div");
+  overlay.className = "card-overlay";
+
+  const frame = document.createElement("div");
+  frame.className = "card-frame";
+
+  // Head
+  const head = document.createElement("div");
+  head.className = "card-head";
+  head.innerHTML = `
+    <p class="card-title">${c.title}</p>
+    <p class="card-subtitle">${c.divisionLabel}</p>
+    <p class="card-meta">
+      <span class="comp-org-badge" style="background:${org.color};color:${org.textColor}">${org.short}</span>
+      <span class="card-round">${c.phase} ${c.year}</span>
+    </p>`;
+
+  // Exercise list — reuses .exercise-list + .kg-load for reps
+  const list = document.createElement("ol");
+  list.className = "exercise-list";
+  c.exercises.forEach((e) => {
+    const li = document.createElement("li");
+    li.innerHTML = `<span class="kg-load">${e.reps}</span> ${e.exercise}`;
+    list.appendChild(li);
+  });
+
+  // Footer
+  const footer = document.createElement("div");
+  footer.className = "card-footer";
+  const timeCap = document.createElement("p");
+  timeCap.className = "time-cap";
+  timeCap.style.color = org.color;
+  timeCap.textContent = c.format;
+  const tag = document.createElement("p");
+  tag.className = "card-tag";
+  tag.textContent = `${org.name} · Compétition`;
+  footer.appendChild(timeCap);
+  footer.appendChild(tag);
+
+  frame.appendChild(head);
+  frame.appendChild(list);
+  if (c.note) {
+    const note = document.createElement("p");
+    note.className = "comp-note-inline";
+    note.textContent = c.note;
+    frame.appendChild(note);
+  }
+  frame.appendChild(footer);
+
+  shell.appendChild(bg);
+  shell.appendChild(overlay);
+  shell.appendChild(frame);
+  article.appendChild(shell);
+
+  return article;
+}
+
 function renderBonusCircuits() {
   const grid = document.getElementById("bonus-grid");
   const circuits = getFilteredCircuits();
@@ -395,30 +523,7 @@ function renderBonusCircuits() {
     return;
   }
 
-  circuits.forEach((c) => {
-    const org = COMP_ORGS[c.org];
-    const card = document.createElement("div");
-    card.className = "comp-card";
-
-    const exHtml = c.exercises
-      .map((e) => `<li><span class="comp-reps">${e.reps}</span>${e.exercise}</li>`)
-      .join("");
-
-    card.innerHTML = `
-      <div class="comp-card-head" style="--org-color:${org.color}; --org-text:${org.textColor}">
-        <span class="comp-org-badge">${org.short}</span>
-        <span class="comp-phase">${c.phase} ${c.year}</span>
-        <span class="comp-division">${c.divisionLabel}</span>
-      </div>
-      <div class="comp-card-body">
-        <p class="comp-title">${c.title}</p>
-        <p class="comp-format">${c.format}</p>
-        ${c.note ? `<p class="comp-note">${c.note}</p>` : ""}
-        <ol class="comp-list">${exHtml}</ol>
-      </div>`;
-
-    grid.appendChild(card);
-  });
+  circuits.forEach((c) => grid.appendChild(buildCompCard(c)));
 }
 
 function setBonusFilter(key, value, btn) {
