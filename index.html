@@ -3,7 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Circuits Street — CBL</title>
+
+    <!-- ── SEO ────────────────────────────────────────────────────────── -->
+    <title>Circuits Street — Fiches Calisthenics à Imprimer | CBL & Atlas</title>
+    <meta name="description" content="Génère et imprime tes fiches de circuits street workout en 4 gestes. 5 niveaux (Kids → Elite), 60 circuits calisthenics, formats compétition CBL & Atlas Corporation. Gratuit, sans compte.">
+    <meta name="keywords" content="circuit calisthenics, fiche street workout, calisthenics imprimable, CBL, Atlas Corporation, calisthenics débutant, elite calisthenics, fiches entraînement">
+    <meta name="author" content="Circuits Street">
+    <meta name="robots" content="index, follow">
+
+    <!-- ── Open Graph (réseaux sociaux) ──────────────────────────────── -->
+    <!-- Remplace l'URL ci-dessous par ton domaine Vercel après déploiement -->
+    <meta property="og:type"        content="website">
+    <meta property="og:title"       content="Circuits Street — Fiches Calisthenics à Imprimer">
+    <meta property="og:description" content="Génère et imprime tes fiches de circuits street workout en 4 gestes. 5 niveaux, 60 circuits, formats compétition CBL & Atlas.">
+    <meta property="og:url"         content="https://circuits-street.vercel.app">
+    <meta property="og:locale"      content="fr_FR">
+    <meta property="og:site_name"   content="Circuits Street">
+
+    <!-- ── Twitter Card ───────────────────────────────────────────────── -->
+    <meta name="twitter:card"        content="summary">
+    <meta name="twitter:title"       content="Circuits Street — Fiches Calisthenics à Imprimer">
+    <meta name="twitter:description" content="Génère et imprime tes fiches de circuits street workout en 4 gestes. 5 niveaux, 60 circuits, formats compétition CBL & Atlas.">
+
+    <!-- ── Canonical ──────────────────────────────────────────────────── -->
+    <link rel="canonical" href="https://circuits-street.vercel.app">
+
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -118,6 +142,10 @@
               <span class="step-label-sm">Fiches / page</span>
               <div id="print-mode-switch"></div>
             </div>
+            <button id="share-btn" class="btn-share" type="button" title="Copier le lien de cette sélection">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              <span id="share-label">Partager</span>
+            </button>
             <button id="print-sheet-2" class="btn-print" type="button">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9V2h12v7"/><rect x="2" y="9" width="20" height="9" rx="2"/><path d="M6 18v4h12v-4"/></svg>
               Imprimer

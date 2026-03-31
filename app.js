@@ -346,18 +346,75 @@ function render() {
   renderPrintGrid();
 }
 
+// ── URL State — encode/decode selection in the address bar ────────────
+function readUrlState() {
+  const params = new URLSearchParams(window.location.search);
+  const d = params.get("d");
+  const g = params.get("g");
+  const s = params.get("s");
+  const m = params.get("m");
+
+  if (d && DIVISIONS.includes(d))      state.division  = d;
+  if (g && GENDERS.includes(g))        state.gender    = g;
+  if (m === "3" || m === "6")          state.printMode = Number(m);
+
+  if (s) {
+    const ids = s.split(",").filter(Boolean);
+    state.selectedIds = ids
+      .filter((id) => state.circuits.some((c) => c.id === id))
+      .slice(0, state.printMode);
+  }
+}
+
+function syncUrl() {
+  const params = new URLSearchParams();
+  params.set("d", state.division);
+  params.set("g", state.gender);
+  params.set("m", String(state.printMode));
+  if (state.selectedIds.length) params.set("s", state.selectedIds.join(","));
+  window.history.replaceState(null, "", `${window.location.pathname}?${params.toString()}`);
+}
+
+// ── Share button ───────────────────────────────────────────────────────
+function bindShareButton() {
+  const btn   = document.getElementById("share-btn");
+  const label = document.getElementById("share-label");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    syncUrl();
+    const shareUrl = window.location.href;
+
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      label.textContent = "Copié !";
+      btn.classList.add("copied");
+      setTimeout(() => { label.textContent = "Partager"; btn.classList.remove("copied"); }, 2000);
+    });
+  });
+}
+
 // ── Events ────────────────────────────────────────────────────────────
 function bindEvents() {
   const printHandler = () => { renderPrintGrid(); window.print(); };
   elements.printSheet.addEventListener("click", printHandler);
   if (elements.printSheet2) elements.printSheet2.addEventListener("click", printHandler);
+  bindShareButton();
 }
+
+// ── Patch render & toggleSelection to sync URL ─────────────────────────
+const _render = render;
+function render() { _render(); syncUrl(); }
+
+const _toggleSelection = toggleSelection;
+function toggleSelection(id) { _toggleSelection(id); syncUrl(); }
 
 // ── Init ──────────────────────────────────────────────────────────────
 function initialize() {
+  readUrlState();
   createPrintModeButtons();
   bindEvents();
-  render();
+  _render();   // use raw render on init (syncUrl called right after)
+  syncUrl();
 }
 
 initialize();
