@@ -322,9 +322,12 @@ function createPrintModeButtons() {
 
 // ── Helpers ───────────────────────────────────────────────────────────
 function getVisibleCircuits() {
-  return state.circuits.filter(
+  const all     = state.circuits.filter(
     (c) => c.division === state.division && c.gender === state.gender
   );
+  const boss    = all.filter((c) =>  c.isBoss);
+  const regular = all.filter((c) => !c.isBoss);
+  return [...boss, ...regular];   // boss card first — immediately visible
 }
 
 function updateSelectionInfo() {
