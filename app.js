@@ -370,7 +370,7 @@ function buildCard(circuit, isPrint = false) {
     const bossBadge = document.createElement("div");
     bossBadge.className = "boss-badge";
     bossBadge.innerHTML = `<span>⚡ BOSS</span><span class="boss-next">Niveau suivant →</span>`;
-    shell.appendChild(bossBadge);
+    shell.insertBefore(bossBadge, shell.querySelector(".card-frame"));
   }
 
   // Elite premium overrides

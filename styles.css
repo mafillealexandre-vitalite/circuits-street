@@ -464,6 +464,7 @@ h2 { font-size: 1.4rem; }
 
 .card-boss .card-frame {
   border-color: rgba(212,168,67,0.50);
+  padding-top: 56px; /* room for the BOSS badge */
 }
 
 .card-boss .card-frame::before,
@@ -476,10 +477,10 @@ h2 { font-size: 1.4rem; }
 .card-boss .exercise-list li::marker { color: #d4a843; }
 .card-boss .card-tag { color: rgba(212,168,67,0.80); }
 
-/* BOSS badge — absolute positioned inside card-shell */
+/* BOSS badge — pinned to top-center, always visible */
 .boss-badge {
   position: absolute;
-  bottom: 18px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
