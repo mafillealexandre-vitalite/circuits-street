@@ -603,4 +603,289 @@ h2 { font-size: 1.4rem; }
   .print-grid.mode-6 .print-card .card-frame::after { display: none; }
 
   .print-card, .print-card .card-shell, .print-slot { break-inside: avoid; }
+
+  /* Hide bonus modal in print */
+  .bonus-modal, #bonus-btn { display: none !important; }
+}
+
+/* ── Hero actions row ──────────────────────────────────────────────── */
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ── Bonus Button ──────────────────────────────────────────────────── */
+.btn-bonus {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 2px solid #d4a843;
+  border-radius: 14px;
+  background: transparent;
+  color: #d4a843;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-bonus:hover {
+  background: #d4a843;
+  color: #000;
+}
+.btn-bonus svg { transition: fill 0.15s; }
+.btn-bonus:hover svg { fill: #000; }
+
+/* ── Bonus Modal ───────────────────────────────────────────────────── */
+body.modal-open { overflow: hidden; }
+
+.bonus-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+.bonus-modal.open { display: flex; align-items: flex-end; }
+@media (min-width: 640px) { .bonus-modal.open { align-items: center; } }
+
+.bonus-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 12, 20, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.bonus-panel {
+  position: relative;
+  z-index: 1;
+  background: #10141e;
+  border-radius: 24px 24px 0 0;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px 20px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media (min-width: 640px) {
+  .bonus-panel {
+    border-radius: 24px;
+    max-width: 900px;
+    margin: auto;
+    max-height: 85vh;
+  }
+}
+
+.bonus-panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.bonus-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #d4a843;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 6px 0 4px;
+}
+
+.bonus-subtitle {
+  margin: 0;
+  font-size: 0.72rem;
+  color: #7a8499;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.bonus-close-btn {
+  background: rgba(255,255,255,0.08);
+  border: 0;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bonus-close-btn:hover { background: rgba(255,255,255,0.15); }
+
+/* ── Bonus Filters ─────────────────────────────────────────────────── */
+.bonus-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bonus-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.bonus-filter-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #4a5568;
+  min-width: 72px;
+}
+
+.bonus-chip {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  color: #9aa3b2;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.bonus-chip:hover { background: rgba(255,255,255,0.10); color: #fff; }
+.bonus-chip.active {
+  background: #d4a843;
+  border-color: #d4a843;
+  color: #000;
+}
+
+/* ── Competition Cards Grid ────────────────────────────────────────── */
+.bonus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.bonus-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #4a5568;
+  padding: 40px 0;
+  font-size: 0.9rem;
+}
+
+.comp-card {
+  background: #181c28;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.comp-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  flex-wrap: wrap;
+}
+
+.comp-org-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--org-color);
+  color: var(--org-text);
+  font-size: 0.65rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.comp-phase {
+  font-size: 0.68rem;
+  color: #9aa3b2;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.comp-division {
+  margin-left: auto;
+  font-size: 0.65rem;
+  color: var(--org-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.comp-card-body {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.comp-title {
+  margin: 0;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #e2e8f0;
+  line-height: 1.1;
+}
+
+.comp-format {
+  margin: 0;
+  font-size: 0.72rem;
+  color: #d4a843;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.comp-note {
+  margin: 0;
+  font-size: 0.68rem;
+  color: #718096;
+  font-style: italic;
+}
+
+.comp-list {
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.comp-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: #cbd5e0;
+  line-height: 1.3;
+}
+
+.comp-reps {
+  min-width: 36px;
+  text-align: right;
+  font-weight: 900;
+  font-size: 0.8rem;
+  color: #e53e3e;
+  flex-shrink: 0;
 }
