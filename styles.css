@@ -643,31 +643,40 @@ h2 { font-size: 1.4rem; }
   flex-shrink: 0;
 }
 
-/* ── Bonus Button ──────────────────────────────────────────────────── */
-.btn-bonus {
-  display: inline-flex;
+/* ── Circuits Officiels Banner ─────────────────────────────────────── */
+.bonus-banner {
+  display: flex;
   align-items: center;
-  gap: 7px;
-  min-height: 40px;
-  padding: 0 16px;
-  border: 2px solid #d4a843;
-  border-radius: 14px;
-  background: transparent;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 20px;
+  border: 1.5px solid rgba(212, 168, 67, 0.45);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #1a1508 0%, #0f0d05 100%);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+}
+.bonus-banner:hover {
+  border-color: rgba(212, 168, 67, 0.8);
+  background: linear-gradient(135deg, #221c08 0%, #150f04 100%);
+}
+.bonus-banner-label {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: #d4a843;
-  font-weight: 700;
-  font-size: 0.75rem;
+  white-space: nowrap;
+}
+.bonus-banner-sub {
+  font-size: 0.72rem;
+  color: #7a6830;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.15s, color 0.15s;
+  flex: 1;
 }
-.btn-bonus:hover {
-  background: #d4a843;
-  color: #000;
-}
-.btn-bonus svg { transition: fill 0.15s; }
-.btn-bonus:hover svg { fill: #000; }
+.bonus-banner-arrow { margin-left: auto; flex-shrink: 0; }
 
 /* ── Bonus Modal ───────────────────────────────────────────────────── */
 body.modal-open { overflow: hidden; }
