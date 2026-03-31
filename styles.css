@@ -433,6 +433,93 @@ h2 { font-size: 1.4rem; }
 }
 .card-elite .card-tag { color: rgba(212,168,67,0.65); }
 
+/* ── Boss Card ───────────────────────────────────────────────────────── */
+.card-boss .card-shell {
+  box-shadow:
+    0 0 0 2px rgba(212,168,67,0.9),
+    0 0 20px rgba(212,168,67,0.5),
+    0 0 55px rgba(192,132,252,0.25),
+    0 0 90px rgba(112,215,255,0.12),
+    0 24px 70px rgba(0,0,0,0.6);
+  animation: boss-glow 2.8s ease-in-out infinite;
+}
+
+@keyframes boss-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 0 2px rgba(212,168,67,0.9),
+      0 0 20px rgba(212,168,67,0.4),
+      0 0 55px rgba(192,132,252,0.20),
+      0 24px 70px rgba(0,0,0,0.6);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2.5px rgba(212,168,67,1),
+      0 0 35px rgba(212,168,67,0.7),
+      0 0 80px rgba(192,132,252,0.40),
+      0 0 120px rgba(112,215,255,0.20),
+      0 24px 70px rgba(0,0,0,0.6);
+  }
+}
+
+.card-boss .card-frame {
+  border-color: rgba(212,168,67,0.50);
+}
+
+.card-boss .card-frame::before,
+.card-boss .card-frame::after {
+  border-color: rgba(212,168,67,0.90);
+  width: 32px;
+  height: 32px;
+}
+
+.card-boss .exercise-list li::marker { color: #d4a843; }
+.card-boss .card-tag { color: rgba(212,168,67,0.80); }
+
+/* BOSS badge — absolute positioned inside card-shell */
+.boss-badge {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  pointer-events: none;
+}
+
+.boss-badge span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #d4a843, #f5d97a, #d4a843);
+  background-size: 200% 100%;
+  animation: boss-shimmer 2s linear infinite;
+  color: #000;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@keyframes boss-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.boss-next {
+  font-size: 0.6rem;
+  color: rgba(212,168,67,0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+}
+
 .card-footer {
   display: flex;
   justify-content: space-between;

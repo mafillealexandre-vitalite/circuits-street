@@ -82,6 +82,122 @@ function buildTexture(division) {
   return toDataUri(svg);
 }
 
+function buildBossTexture() {
+  const gold   = "#d4a843";
+  const plat   = "#e8eaf0";
+  const purple = "#c084fc";
+  const cyan   = "#70d7ff";
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1600" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="bossbg" x1="0%" y1="0%" x2="15%" y2="100%">
+          <stop offset="0%"   stop-color="#08060f"/>
+          <stop offset="40%"  stop-color="#05040b"/>
+          <stop offset="100%" stop-color="#030208"/>
+        </linearGradient>
+        <linearGradient id="holo1" x1="0%" y1="20%" x2="100%" y2="80%">
+          <stop offset="0%"   stop-color="${gold}"   stop-opacity="0"/>
+          <stop offset="30%"  stop-color="${gold}"   stop-opacity="0.22"/>
+          <stop offset="50%"  stop-color="#ffffff"   stop-opacity="0.18"/>
+          <stop offset="70%"  stop-color="${purple}" stop-opacity="0.20"/>
+          <stop offset="100%" stop-color="${purple}" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="holo2" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%"   stop-color="${cyan}"   stop-opacity="0"/>
+          <stop offset="40%"  stop-color="${cyan}"   stop-opacity="0.12"/>
+          <stop offset="60%"  stop-color="#00b894"   stop-opacity="0.10"/>
+          <stop offset="100%" stop-color="#00b894"   stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="platshimmer" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%"   stop-color="${plat}"   stop-opacity="0"/>
+          <stop offset="44%"  stop-color="${plat}"   stop-opacity="0.22"/>
+          <stop offset="50%"  stop-color="#ffffff"   stop-opacity="0.40"/>
+          <stop offset="56%"  stop-color="${plat}"   stop-opacity="0.22"/>
+          <stop offset="100%" stop-color="${plat}"   stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <rect width="900" height="1600" fill="url(#bossbg)"/>
+      <rect width="900" height="1600" fill="url(#holo1)"      opacity="0.85"/>
+      <rect width="900" height="1600" fill="url(#holo2)"      opacity="0.65"/>
+
+      <!-- Fine grid -->
+      <g opacity="0.055" stroke="${plat}" stroke-width="1" fill="none">
+        <path d="M0 200 L900 200"/><path d="M0 400 L900 400"/>
+        <path d="M0 600 L900 600"/><path d="M0 800 L900 800"/>
+        <path d="M0 1000 L900 1000"/><path d="M0 1200 L900 1200"/>
+        <path d="M0 1400 L900 1400"/>
+        <path d="M100 0 L100 1600"/><path d="M200 0 L200 1600"/>
+        <path d="M300 0 L300 1600"/><path d="M400 0 L400 1600"/>
+        <path d="M500 0 L500 1600"/><path d="M600 0 L600 1600"/>
+        <path d="M700 0 L700 1600"/><path d="M800 0 L800 1600"/>
+      </g>
+
+      <!-- Platinum diagonal slashes -->
+      <g opacity="0.22" stroke="${plat}" stroke-width="14" stroke-linecap="round">
+        <path d="M60 0 L540 1600"/>
+        <path d="M220 0 L700 1600"/>
+        <path d="M430 0 L910 1600"/>
+      </g>
+      <!-- Thin gold accents -->
+      <g opacity="0.18" stroke="${gold}" stroke-width="2.5">
+        <path d="M20 0 L500 1600"/>
+        <path d="M145 0 L625 1600"/>
+        <path d="M710 0 L900 560"/>
+      </g>
+      <!-- Purple accent -->
+      <g opacity="0.14" stroke="${purple}" stroke-width="2">
+        <path d="M330 0 L810 1600"/>
+      </g>
+
+      <!-- Platinum shimmer band -->
+      <rect width="900" height="1600" fill="url(#platshimmer)" opacity="0.55"/>
+
+      <!-- Bottom multi-color waves -->
+      <g opacity="0.50" stroke="${gold}" stroke-width="3.5" fill="none">
+        <path d="M0 1500 C100 1460 180 1390 280 1310 C380 1230 460 1270 580 1300 C680 1330 760 1280 900 1260"/>
+        <path d="M0 1540 C120 1510 200 1440 300 1360 C400 1280 500 1310 620 1340 C720 1365 800 1315 900 1300"/>
+        <path d="M0 1580 C80 1560 160 1520 260 1460 C360 1400 440 1420 560 1450"/>
+      </g>
+      <g opacity="0.28" stroke="${purple}" stroke-width="2" fill="none">
+        <path d="M0 1515 C90 1485 170 1425 270 1365 C370 1305 450 1335 570 1360"/>
+      </g>
+      <g opacity="0.20" stroke="${cyan}" stroke-width="2" fill="none">
+        <path d="M0 1560 C110 1530 200 1470 310 1410 C420 1350 500 1375 620 1400"/>
+      </g>
+
+      <!-- Sparkle stars -->
+      <g fill="#ffffff">
+        <polygon points="820,55 825,70 840,70 828,79 833,94 820,85 807,94 812,79 800,70 815,70" opacity="0.75"/>
+        <polygon points="76,1488 79,1498 89,1498 81,1504 84,1514 76,1508 68,1514 71,1504 63,1498 73,1498"  opacity="0.60"/>
+        <polygon points="460,775 462,782 469,782 463,786 465,793 460,789 455,793 457,786 451,782 458,782"  opacity="0.55"/>
+      </g>
+      <g fill="${gold}" opacity="0.65">
+        <circle cx="200" cy="1210" r="3"/>
+        <circle cx="700" cy="475"  r="2.5"/>
+        <circle cx="340" cy="920"  r="2"/>
+      </g>
+      <g fill="${cyan}" opacity="0.50">
+        <circle cx="620" cy="320" r="2"/>
+        <circle cx="140" cy="640" r="1.8"/>
+      </g>
+
+      <!-- Central radiant orb -->
+      <circle cx="820" cy="75" r="100" fill="${gold}"   opacity="0.09"/>
+      <circle cx="820" cy="75" r="55"  fill="${plat}"   opacity="0.14"/>
+      <circle cx="820" cy="75" r="25"  fill="#ffffff"   opacity="0.28"/>
+      <circle cx="820" cy="75" r="8"   fill="${gold}"   opacity="0.80"/>
+
+      <!-- Bottom accent orb -->
+      <circle cx="70" cy="1530" r="35" fill="${purple}" opacity="0.12"/>
+
+      <!-- Top border lines -->
+      <line x1="0" y1="2" x2="900" y2="2" stroke="${plat}" stroke-width="3"   opacity="0.65"/>
+      <line x1="0" y1="6" x2="900" y2="6" stroke="${gold}" stroke-width="1.5" opacity="0.45"/>
+    </svg>`;
+  return toDataUri(svg);
+}
+
 function buildEliteTexture() {
   const gold   = "#d4a843";
   const gold2  = "#f5d97a";
@@ -242,6 +358,20 @@ function buildCard(circuit, isPrint = false) {
   round.textContent    = circuit.round;
   timeCap.textContent  = `Time cap : ${circuit.timeCap}`;
   tag.textContent      = `${theme.tag} · ${circuit.division}`;
+
+  // Boss card overrides
+  if (circuit.isBoss) {
+    root.classList.add("card-boss");
+    bg.src = buildBossTexture();
+    shell.style.setProperty("--accent", "#d4a843");
+    timeCap.style.color = "#d4a843";
+    tag.textContent = `⚡ BOSS · ${circuit.division}`;
+    // BOSS badge
+    const bossBadge = document.createElement("div");
+    bossBadge.className = "boss-badge";
+    bossBadge.innerHTML = `<span>⚡ BOSS</span><span class="boss-next">Niveau suivant →</span>`;
+    shell.appendChild(bossBadge);
+  }
 
   // Elite premium overrides
   if (circuit.division === "Elite") {

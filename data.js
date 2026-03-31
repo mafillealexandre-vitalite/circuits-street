@@ -902,4 +902,172 @@ const CIRCUIT_LIBRARY = [
       "2× 5s Handstand (mur, contrôlé)",
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════
+  //  BOSS CARDS — 1 par division × 2 genres
+  //  Le test ultime qui valide le passage au niveau suivant.
+  //  Tous les groupes musculaires, équilibre parfait, sans concession.
+  // ═══════════════════════════════════════════════════════════════
+
+  // ── Kids Boss ───────────────────────────────────────────────────
+  {
+    id: "kids-m-boss", division: "Kids", gender: "Men", isBoss: true,
+    round: "BOSS · Grand Défi Junior",
+    title: "Le Grand Défi",
+    subtitle: "Prouve que tu es prêt pour le niveau suivant",
+    timeCap: "10 min · 3 rounds",
+    exercises: [
+      { text: "12 Tractions australiennes",   cat: "PULL"   },
+      { text: "20 Air squat",                  cat: "LEGS"   },
+      { text: "10 Push-up",                    cat: "PUSH"   },
+      { text: "30s Gainage planche",           cat: "CORE"   },
+      { text: "15 Dips sur banc",              cat: "PUSH"   },
+      { text: "20 Jumping jack explosifs",     cat: "CARDIO" },
+    ],
+  },
+  {
+    id: "kids-w-boss", division: "Kids", gender: "Women", isBoss: true,
+    round: "BOSS · Grand Défi Junior",
+    title: "Le Grand Défi",
+    subtitle: "Prouve que tu es prête pour le niveau suivant",
+    timeCap: "10 min · 3 rounds",
+    exercises: [
+      { text: "10 Tractions australiennes",    cat: "PULL"   },
+      { text: "20 Air squat",                  cat: "LEGS"   },
+      { text: "10 Push-up sur genoux",         cat: "PUSH"   },
+      { text: "20s Gainage planche",           cat: "CORE"   },
+      { text: "12 Dips sur banc",              cat: "PUSH"   },
+      { text: "20 Jumping jack explosifs",     cat: "CARDIO" },
+    ],
+  },
+
+  // ── Premiers Pas Boss ───────────────────────────────────────────
+  {
+    id: "pp-m-boss", division: "Premiers Pas", gender: "Men", isBoss: true,
+    round: "BOSS · Test de Passage",
+    title: "Test de Passage",
+    subtitle: "Le ticket d'entrée pour Espoir",
+    timeCap: "12 min · 3 rounds",
+    exercises: [
+      "8 Tractions prise pronation stricte",
+      "15 Push-up archer (5 chaque côté)",
+      "12 Dips barres parallèles",
+      "20 Squat sauté",
+      "30s L-sit sur parallèles",
+      "10 Burpee",
+    ],
+  },
+  {
+    id: "pp-w-boss", division: "Premiers Pas", gender: "Women", isBoss: true,
+    round: "BOSS · Test de Passage",
+    title: "Test de Passage",
+    subtitle: "Le ticket d'entrée pour Espoir",
+    timeCap: "12 min · 3 rounds",
+    exercises: [
+      "6 Tractions prise pronation",
+      "12 Push-up archer (6 chaque côté)",
+      "10 Dips barres parallèles",
+      "20 Squat sauté",
+      "20s L-sit sur parallèles",
+      "10 Burpee",
+    ],
+  },
+
+  // ── Espoir Boss ─────────────────────────────────────────────────
+  {
+    id: "espoir-m-boss", division: "Espoir", gender: "Men", isBoss: true,
+    round: "BOSS · Brevet Intermédiaire",
+    title: "Brevet Intermédiaire",
+    subtitle: "Franchis la porte du Semi-Pro",
+    timeCap: "15 min · 4 rounds",
+    exercises: [
+      "6 Muscle-up (ou 12 tractions lestées @10 kg)",
+      "15 Pistol squat total",
+      "12 Dips lestés @10 kg",
+      "10 Pike push-up strict",
+      "10 Squat bulgare @10 kg total",
+      "20s Tuck front lever",
+    ],
+  },
+  {
+    id: "espoir-w-boss", division: "Espoir", gender: "Women", isBoss: true,
+    round: "BOSS · Brevet Intermédiaire",
+    title: "Brevet Intermédiaire",
+    subtitle: "Franchis la porte du Semi-Pro",
+    timeCap: "15 min · 4 rounds",
+    exercises: [
+      "4 Muscle-up (ou 8 tractions lestées @5 kg)",
+      "12 Pistol squat total",
+      "10 Dips lestés @5 kg",
+      "8 Pike push-up",
+      "10 Squat bulgare @5 kg total",
+      "15s Tuck front lever",
+    ],
+  },
+
+  // ── Semi-Pro Boss ───────────────────────────────────────────────
+  {
+    id: "sp-m-boss", division: "Semi-Pro", gender: "Men", isBoss: true,
+    round: "BOSS · Challenge Compétiteur",
+    title: "Challenge Compétiteur",
+    subtitle: "Le seuil de l'Elite",
+    timeCap: "20 min · 5 rounds",
+    exercises: [
+      "8 Muscle-up",
+      "12 Pistol squat total",
+      "15 Tractions lestées @20 kg",
+      "8 Handstand push-up strict",
+      "15 Dips lestés @20 kg",
+      "20s Front lever hold",
+    ],
+  },
+  {
+    id: "sp-w-boss", division: "Semi-Pro", gender: "Women", isBoss: true,
+    round: "BOSS · Challenge Compétiteur",
+    title: "Challenge Compétiteur",
+    subtitle: "Le seuil de l'Elite",
+    timeCap: "20 min · 5 rounds",
+    exercises: [
+      "5 Muscle-up",
+      "10 Pistol squat total",
+      "10 Tractions lestées @10 kg",
+      "6 Handstand push-up",
+      "12 Dips lestés @10 kg",
+      "15s Front lever hold",
+    ],
+  },
+
+  // ── Elite Boss ──────────────────────────────────────────────────
+  {
+    id: "elite-m-boss", division: "Elite", gender: "Men", isBoss: true,
+    round: "BOSS · Circuit Maître",
+    title: "Circuit Maître",
+    subtitle: "Le test ultime du streetworkout",
+    timeCap: "30 min · 6 rounds",
+    exercises: [
+      "12 Muscle-up",
+      "20 Pistol squat total",
+      "20 Tractions lestées @30 kg",
+      "10 Handstand push-up strict",
+      "25 Dips lestés @30 kg",
+      "30s Front lever hold",
+      "20s Back lever hold",
+    ],
+  },
+  {
+    id: "elite-w-boss", division: "Elite", gender: "Women", isBoss: true,
+    round: "BOSS · Circuit Maître",
+    title: "Circuit Maître",
+    subtitle: "Le test ultime du streetworkout",
+    timeCap: "30 min · 6 rounds",
+    exercises: [
+      "8 Muscle-up",
+      "15 Pistol squat total",
+      "15 Tractions lestées @15 kg",
+      "8 Handstand push-up strict",
+      "20 Dips lestés @15 kg",
+      "20s Front lever hold",
+      "15s Back lever hold",
+    ],
+  },
 ];
