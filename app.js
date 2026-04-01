@@ -399,12 +399,24 @@ function buildCard(circuit, isPrint = false) {
       text.textContent = exercise.text;
       item.appendChild(badge);
       item.appendChild(text);
+      if (exercise.unbroken) {
+        const ub = document.createElement("span");
+        ub.className = "badge-unbroken";
+        ub.textContent = "UNBROKEN";
+        item.appendChild(ub);
+      }
     } else {
       const str = typeof exercise === "string" ? exercise : exercise.text;
       item.innerHTML = str.replace(
         /(@\d+\s*kg)/gi,
         '<span class="kg-load">$1</span>'
       );
+      if (typeof exercise === "object" && exercise.unbroken) {
+        const ub = document.createElement("span");
+        ub.className = "badge-unbroken";
+        ub.textContent = "UNBROKEN";
+        item.appendChild(ub);
+      }
     }
 
     list.appendChild(item);

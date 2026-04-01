@@ -392,6 +392,23 @@ h2 { font-size: 1.4rem; }
 /* @kg — rouge vif saturé, jamais rose */
 .kg-load { color: #e53e3e; font-weight: 900; }
 
+/* UNBROKEN stamp — noir, encadré, compact */
+.badge-unbroken {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  font-size: 0.48rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  padding: 1px 4px;
+  border: 1px solid #555;
+  border-radius: 2px;
+  margin-left: 5px;
+  vertical-align: middle;
+  font-family: "Arial Black", sans-serif;
+  flex-shrink: 0;
+}
+
 /* Kids exercise category badges */
 .ex-badge {
   display: inline-block;
@@ -474,6 +491,8 @@ h2 { font-size: 1.4rem; }
   height: 32px;
 }
 
+/* Boss cards — 10 exercices, on réduit légèrement la taille */
+.card-boss .exercise-list { font-size: 0.78rem; gap: 4px; }
 .card-boss .exercise-list li::marker { color: #d4a843; }
 .card-boss .card-tag { color: rgba(212,168,67,0.80); }
 
